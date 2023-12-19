@@ -1,0 +1,110 @@
+package com.niit.todo.usertodoservice.controller;
+
+import com.niit.todo.usertodoservice.domain.TodoList;
+import com.niit.todo.usertodoservice.domain.User;
+import com.niit.todo.usertodoservice.exception.TodoNotFoundException;
+import com.niit.todo.usertodoservice.exception.UserAlreadyExistsException;
+import com.niit.todo.usertodoservice.exception.UserNotFoundException;
+import com.niit.todo.usertodoservice.service.ITodoService;
+import io.jsonwebtoken.Claims;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+import java.util.UUID;
+
+
+@RestController
+@RequestMapping("/api/v2")
+public class TodoController {
+
+    private ITodoService iTodoService;
+    private ResponseEntity<?> responseEntity;
+
+    @Autowired
+    public TodoController(ITodoService iTodoService) {
+        this.iTodoService = iTodoService;
+    }
+
+    // get email from token
+    private String getEmailIdFromClaims(HttpServletRequest request) {
+        System.out.println("header " + request.getHeader("Authorization"));
+        Claims claims = (Claims) request.getAttribute("claims");
+        System.out.println("Email ID from claims :: " + claims.getSubject());
+        return claims.getSubject();
+    }
+
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody User user) throws UserAlreadyExistsException {
+        try {
+            responseEntity = new ResponseEntity<>(iTodoService.registerUser(user), HttpStatus.CREATED);
+        } catch (UserAlreadyExistsException e) {
+            throw new UserAlreadyExistsException();
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<>("Error in registering user!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
+
+    @PostMapping("/user/todo")
+    public ResponseEntity<?> saveTodoList(@RequestBody TodoList todoList, HttpServletRequest request) throws UserNotFoundException {
+        try {
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.saveTodo(todoList, id), HttpStatus.CREATED);
+        } catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<>("Error in saving todo!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
+
+    @GetMapping("/user/todos")
+    public ResponseEntity<?> getAllTodosList(HttpServletRequest request) throws UserNotFoundException {
+        try {
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.getAllTodos(id), HttpStatus.OK);
+        } catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<>("Cannot fetch to-dos!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
+
+    @DeleteMapping("/user/todo/{todoId}")
+    public ResponseEntity<?> deleteATodo(@PathVariable UUID todoId, HttpServletRequest request) throws TodoNotFoundException, UserNotFoundException {
+        try {
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.deleteTodo(id, todoId), HttpStatus.OK);
+        } catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
+        } catch (TodoNotFoundException e) {
+            throw new TodoNotFoundException();
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<>("Could not delete todo!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
+
+    @PutMapping("/user/todo")
+    public ResponseEntity<?> updateATodo(@RequestBody TodoList todoList, HttpServletRequest request) throws UserNotFoundException, TodoNotFoundException {
+
+        try {
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.updateTodo(id, todoList), HttpStatus.OK);
+        } catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
+        } catch (TodoNotFoundException e) {
+            throw new TodoNotFoundException();
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<>("Could not update todo!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
+
+}
