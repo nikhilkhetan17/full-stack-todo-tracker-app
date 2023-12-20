@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  // imageUrl: string = "../assets/images/home-image.png"
+  imageUrl: string = "../assets/images/home-img.svg"
+
 }
