@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class SignUpComponent {
 
+  imageUrl: string = "../assets/images/signup.svg"
+
+  onSubmit() {
+    console.log("hello");
+  }
+
 }
