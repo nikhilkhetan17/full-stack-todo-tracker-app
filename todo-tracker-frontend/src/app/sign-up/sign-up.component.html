@@ -18,7 +18,11 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input matInput required>
+                        <input matInput required type="password">
+                        <!-- <input matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button> -->
                     </mat-form-field>
                     <div class="btn-container">
                         <button mat-raised-button color="primary" type="submit">Sign Up</button>
