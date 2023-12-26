@@ -1,1 +1,21 @@
-<p>dashboard works!</p>
+<!-- <button mat-raised-button color="primary" class="add-todo" routerLink="/add-todo">Add Todo</button> -->
+
+<div class="card-container">
+    <mat-card class="card-content" *ngFor="let todo of todos">
+        <mat-card-header>
+            <p class="todo-title">{{todo.todoName}}</p>
+            <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+            <!-- <mat-card-subtitle>Target Date: {{todo.targetDate | date}}</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{todo.todoDescription}}</p>
+            <p>Target Date: {{todo.targetDate | date}}</p>
+            <p>Is Todo Completed: {{todo.todoCompleted}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <!-- <button mat-raised-button color="primary" style="margin-right: 20px" 
+            routerLink="/edit-todo/{{todo?.todoId}}">Edit</button> -->
+            <button mat-raised-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
