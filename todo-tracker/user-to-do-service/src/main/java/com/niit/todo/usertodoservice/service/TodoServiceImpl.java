@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class TodoServiceImpl implements ITodoService {
@@ -124,5 +121,38 @@ public class TodoServiceImpl implements ITodoService {
         }
         user.setTodoList(getTodoLists);
         return userTodoRepository.save(user);
+    }
+
+    @Override
+    public String getUserName(String emailId) throws UserNotFoundException {
+        if (userTodoRepository.findById(emailId).isEmpty()) {
+            throw new UserNotFoundException();
+        }
+
+        return userTodoRepository.findById(emailId).get().getUserName();
+    }
+
+    @Override
+    public User retrieveSingleTodo(String emailId, UUID todoID) throws UserNotFoundException,TodoNotFoundException {
+        if (userTodoRepository.findById(emailId).isEmpty()) {
+            throw new UserNotFoundException();
+        }
+
+
+        User user = userTodoRepository.findById(emailId).get();
+        List<TodoList> todoList = user.getTodoList();
+
+        // Search for the todo with the specified todoID
+        Optional<TodoList> optionalTodo = todoList.stream()
+                .filter(todo -> todo.getTodoId().equals(todoID))
+                .findFirst();
+
+        if (optionalTodo.isEmpty()) {
+            throw new TodoNotFoundException();
+        }
+
+        // Assuming that your User class has a method to set the filtered TodoList
+        user.setTodoList(Collections.singletonList(optionalTodo.get()));
+        return user;
     }
 }

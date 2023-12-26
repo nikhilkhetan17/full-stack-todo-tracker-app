@@ -17,4 +17,8 @@ public interface ITodoService {
     List<TodoList> getAllTodos(String emailId) throws TodoNotFoundException , UserNotFoundException;
     User deleteTodo(String emailId, UUID todoId) throws TodoNotFoundException, UserNotFoundException;
     User updateTodo(String emailId, TodoList todoList) throws UserNotFoundException, TodoNotFoundException;
+
+    String getUserName(String emailId) throws UserNotFoundException;
+
+    User retrieveSingleTodo(String emailId, UUID todoID) throws UserNotFoundException, TodoNotFoundException;
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HeaderComponent,
     SignUpComponent,
     PageNotFoundComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

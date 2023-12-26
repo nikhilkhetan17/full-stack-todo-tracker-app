@@ -10,15 +10,15 @@
                 <form (ngSubmit)="onSubmit()">
                     <mat-form-field appearance="outline">
                         <mat-label>Full Name</mat-label>
-                        <input matInput required>
+                        <input matInput required [(ngModel)]="register.userName" name="userName">
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Email Id</mat-label>
-                        <input matInput required>
+                        <input matInput required [(ngModel)]="register.emailId" name="emailId">
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input matInput required type="password">
+                        <input matInput required type="password" [(ngModel)]="register.password" name="password">
                         <!-- <input matInput [type]="hide ? 'password' : 'text'">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

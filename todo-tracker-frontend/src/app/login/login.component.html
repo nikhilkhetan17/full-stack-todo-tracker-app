@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <h1 class="text-center">Login Page!</h1>
+
+        <!-- Form -->
+        <form (ngSubmit)="onSubmit()">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>EmailId</mat-label>
+                <input type="text" matInput required name="username" [(ngModel)]="crdentials.emailId">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Paswword</mat-label>
+                <input type="password" matInput required name="password" [(ngModel)]="crdentials.password">
+            </mat-form-field>
+            <div>
+                <button type="submit" mat-raised-button color="primary">Login</button>
+                <button type="reset" mat-raised-button color="accent" style="margin-left: 20px;">Reset</button>
+            </div>
+        </form>
+        <br>
+        <!-- {{credentials | json}} -->
+    </div>
+</div>
+

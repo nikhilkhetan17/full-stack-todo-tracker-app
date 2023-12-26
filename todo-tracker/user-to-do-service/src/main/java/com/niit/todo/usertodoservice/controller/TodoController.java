@@ -19,6 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v2")
+@CrossOrigin(origins = "*")
 public class TodoController {
 
     private ITodoService iTodoService;
@@ -106,5 +107,32 @@ public class TodoController {
         }
         return responseEntity;
     }
+
+    @GetMapping("/user/getUsername")
+    public ResponseEntity<?> getUsername(HttpServletRequest request) throws UserNotFoundException {
+        try {
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.getUserName(id), HttpStatus.OK);
+        } catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<>("Cannot get Username", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
+
+    @GetMapping("/user/get-todo/{todoId}")
+    public ResponseEntity<?> getATodo(@PathVariable UUID todoId, HttpServletRequest request) throws UserNotFoundException {
+        try {
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.retrieveSingleTodo(id, todoId), HttpStatus.OK);
+        } catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<>("Cannot get a todo", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
+
 
 }
