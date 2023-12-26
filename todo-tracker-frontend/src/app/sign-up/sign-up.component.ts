@@ -11,25 +11,27 @@ export class SignUpComponent {
   imageUrl: string = '../assets/images/signup.svg';
   hide = true;
 
-  constructor(private registerService: RegisterService, private router: Router) { }
-
   register = {
     emailId: '',
     password: '',
     userName: '',
   };
 
+  constructor(
+    private registerService: RegisterService,
+    private router: Router
+  ) {}
+
   onSubmit() {
-    console.log('hello');
+    // console.log('hello');
     this.registerService.registerUser(this.register).subscribe(
       (response) => {
         console.log(response);
-        this.router.navigate(["login"])
+        this.router.navigate(['login']);
       },
       (err) => {
         console.log(err);
       }
     );
   }
-  
 }

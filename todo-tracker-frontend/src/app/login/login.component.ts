@@ -11,15 +11,15 @@ export class LoginComponent {
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  crdentials = {
+  credentials = {
     emailId: '',
     password: '',
   }
 
 
   onSubmit() {
-    if(this.crdentials.emailId != '' && this.crdentials.password != '') {
-      this.loginService.generateToken(this.crdentials).subscribe(
+    if(this.credentials.emailId != '' && this.credentials.password != '') {
+      this.loginService.generateToken(this.credentials).subscribe(
         response => {
           console.log(response);
           this.loginService.loginUser(response);

@@ -6,12 +6,12 @@
         <form (ngSubmit)="onSubmit()">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>EmailId</mat-label>
-                <input type="text" matInput required name="username" [(ngModel)]="crdentials.emailId">
+                <input type="text" matInput required name="username" [(ngModel)]="credentials.emailId">
             </mat-form-field>
             <br>
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Paswword</mat-label>
-                <input type="password" matInput required name="password" [(ngModel)]="crdentials.password">
+                <input type="password" matInput required name="password" [(ngModel)]="credentials.password">
             </mat-form-field>
             <div>
                 <button type="submit" mat-raised-button color="primary">Login</button>
@@ -19,7 +19,7 @@
             </div>
         </form>
         <br>
-        <!-- {{credentials | json}} -->
+        {{credentials | json}}
     </div>
 </div>
 
