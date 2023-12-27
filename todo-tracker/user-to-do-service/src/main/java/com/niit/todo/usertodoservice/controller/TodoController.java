@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v2")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class TodoController {
 
     private ITodoService iTodoService;

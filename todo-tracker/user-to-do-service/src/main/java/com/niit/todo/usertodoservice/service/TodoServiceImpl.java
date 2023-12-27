@@ -132,6 +132,7 @@ public class TodoServiceImpl implements ITodoService {
         return userTodoRepository.findById(emailId).get().getUserName();
     }
 
+
     @Override
     public User retrieveSingleTodo(String emailId, UUID todoID) throws UserNotFoundException,TodoNotFoundException {
         if (userTodoRepository.findById(emailId).isEmpty()) {
