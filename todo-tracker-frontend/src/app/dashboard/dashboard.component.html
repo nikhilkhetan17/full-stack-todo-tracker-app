@@ -1,4 +1,4 @@
-<!-- <button mat-raised-button color="primary" class="add-todo" routerLink="/add-todo">Add Todo</button> -->
+<button mat-raised-button color="primary" class="add-todo" routerLink="/add-todo">Add Todo</button>
 
 <div class="card-container">
     <mat-card class="card-content" *ngFor="let todo of todos">
@@ -13,8 +13,8 @@
             <p>Is Todo Completed: {{todo.todoCompleted}}</p>
         </mat-card-content>
         <mat-card-actions>
-            <!-- <button mat-raised-button color="primary" style="margin-right: 20px" 
-            routerLink="/edit-todo/{{todo?.todoId}}">Edit</button> -->
+            <button mat-raised-button color="primary" style="margin-right: 20px" 
+            routerLink="/edit-todo/{{todo?.todoId}}">Edit</button>
             <button mat-raised-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button>
         </mat-card-actions>
     </mat-card>

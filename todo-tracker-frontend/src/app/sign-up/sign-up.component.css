@@ -1,20 +1,21 @@
-.signup-image {
+.signUp-image {
   width: 100%;
   max-width: 600px;
   height: auto;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-left: 40px;
+  /* margin-top: 20px; */
   /* border: 1px solid red; */
 }
 
 .wrapper {
     display: flex;
     column-gap: 150px;
+    margin-top: 60px;
 }
 
-.container {
+/* .container {
     margin-top: 40px;
-}
+} */
 /* ********************************************************** */
 
 * {
@@ -25,7 +26,7 @@
   border-radius: 10px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
   width: 430px;
-  height: 400px;
+  height: 410px;
   background-color: #ffffff;
   padding: 10px 30px;
 }

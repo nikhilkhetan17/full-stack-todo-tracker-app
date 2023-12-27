@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 600px;
   height: auto;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .wrapper {
@@ -22,7 +22,7 @@ div p {
 }
 
 .right-text {
-    margin-top: 20px;
+    margin-top: 40px;
     /* padding-right: 5px; */
     max-width: 660px;
     /* border: 1px solid red; */

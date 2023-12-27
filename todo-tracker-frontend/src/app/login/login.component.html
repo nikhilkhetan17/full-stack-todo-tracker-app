@@ -1,25 +1,34 @@
-<div class="bootstrap-wrapper">
+<div class="wrapper">
+    <img src="../../assets/images/login.svg" alt="signup-image" class="signIn-image">
     <div class="container">
-        <h1 class="text-center">Login Page!</h1>
-
-        <!-- Form -->
-        <form (ngSubmit)="onSubmit()">
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>EmailId</mat-label>
-                <input type="text" matInput required name="username" [(ngModel)]="credentials.emailId">
-            </mat-form-field>
-            <br>
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Paswword</mat-label>
-                <input type="password" matInput required name="password" [(ngModel)]="credentials.password">
-            </mat-form-field>
-            <div>
-                <button type="submit" mat-raised-button color="primary">Login</button>
-                <button type="reset" mat-raised-button color="accent" style="margin-left: 20px;">Reset</button>
+        <div class="card">
+            <div class="card_title">
+                <h1>Login</h1>
+                <span>Don't have an account?<button mat-button color="primary" routerLink="/sign-up">Sign
+                        Up</button></span>
             </div>
-        </form>
-        <br>
-        {{credentials | json}}
+            <div class="form">
+                <form (ngSubmit)="onSubmit()">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email Id</mat-label>
+                        <input matInput required [(ngModel)]="credentials.emailId" name="emailId">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <!-- <input matInput required type="password" [(ngModel)]="credentials.password" name="password"> -->
+                        <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="credentials.password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide" type="button">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <div class="btn-container">
+                        <button mat-raised-button color="primary" type="submit">Sign In</button>
+                        <!-- <button mat-raised-button color="warn" type="reset">Reset</button> -->
+                    </div>
+                </form>
+                <br>
+                {{credentials | json}}
+            </div>
+        </div>
     </div>
 </div>
-

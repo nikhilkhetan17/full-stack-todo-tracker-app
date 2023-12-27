@@ -13,6 +13,7 @@ export class HeaderComponent {
 
   constructor(public loginService: LoginService, private registerService: RegisterService){}
 
+  // :void
   ngOnInit() {
     // this.loggedIn = this.loginService.isLoggedIn();
 

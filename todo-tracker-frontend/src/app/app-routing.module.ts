@@ -6,6 +6,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AddTodoComponent } from './add-todo/add-todo.component';
+import { EditTodoComponent } from './edit-todo/edit-todo.component';
 
 const routes: Routes = [
   {
@@ -27,7 +29,17 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'add-todo',
+    component: AddTodoComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'edit-todo/:id',
+    component: EditTodoComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: '**',

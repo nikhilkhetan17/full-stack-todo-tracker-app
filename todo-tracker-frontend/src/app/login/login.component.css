@@ -1,7 +1,67 @@
-.full-width {
-    width: 50%;
+.signIn-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-left: 40px;
+  /* margin-top: 20px; */
+  /* border: 1px solid red; */
 }
 
-form, h1 {
-    margin-left: 20px;
+.wrapper {
+  display: flex;
+  column-gap: 150px;
+  margin-top: 80px;
 }
+
+/* .container {
+      margin-top: 40px;
+  } */
+
+/* ********************************************************** */
+
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 430px;
+  height: 350px;
+  background-color: #ffffff;
+  padding: 10px 30px;
+}
+
+.card_title {
+  text-align: center;
+  padding: 10px;
+}
+
+.card_title span {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.card_title h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.form mat-form-field {
+  width: 100%;
+}
+
+.form button {
+  font-size: 16px;
+}
+
+/* .btn-container {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+} */
+
+.btn-container button {
+    width: 100%;
+}
+
