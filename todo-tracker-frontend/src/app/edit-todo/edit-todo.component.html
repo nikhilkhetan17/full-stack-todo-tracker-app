@@ -8,21 +8,25 @@
                 <input type="text" matInput required [(ngModel)]="todo.todoName" name="todoName">
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="form-field" class="custom-height">
+            <mat-form-field appearance="fill" class="form-field">
                 <mat-label>Todo Description</mat-label>
-                <input type="text" matInput required [(ngModel)]="todo.todoDescription" name="todoDescription">
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="4" required [(ngModel)]="todo.todoDescription" name="todoDescription"></textarea>
             </mat-form-field>
-
-            <!-- <mat-form-field appearance="fill" class="form-field">
-                <mat-label>Todo Completed</mat-label>
-                <input type="text" matInput required [(ngModel)]="todo.todoCompleted" name="todoCompleted">
-            </mat-form-field> -->
 
             <mat-form-field appearance="fill" class="form-field">
                 <mat-label>Todo Completed ?</mat-label>
-                <mat-select [(ngModel)]="todo.todoCompleted" name="food">
-                    <mat-option [value]="true">Yes</mat-option>
-                    <mat-option [value]="false">No</mat-option>
+                <mat-select [(ngModel)]="todo.todoCompleted" name="todoCompleted" required>
+                    <mat-option value="Yes">Yes</mat-option>
+                    <mat-option value="No">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Priority</mat-label>
+                <mat-select [(ngModel)]="todo.priority" name="priority" required>
+                    <mat-option value="Low">Low</mat-option>
+                    <mat-option value="Medium">Medium</mat-option>
+                    <mat-option value="High">High</mat-option>
                 </mat-select>
               </mat-form-field>
 
