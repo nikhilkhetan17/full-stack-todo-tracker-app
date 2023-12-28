@@ -16,10 +16,10 @@
             <div class="value">{{todo.targetDate | date}}</div>
 
             <div class="label">To-Do Completed ?</div>
-            <div class="value completed">{{todo.todoCompleted}}</div>
+            <div class="value completed" [ngClass]="{'completed': todo.todoCompleted === 'Yes', 'not-completed': todo.todoCompleted === 'No'}">{{todo.todoCompleted}}</div>
 
             <div class="label">Priority</div>
-            <div class="value priority-high">{{todo.priority}}</div>
+            <div class="value" [ngClass]="{'priority-high': todo.priority === 'High', 'priority-medium': todo.priority === 'Medium', 'priority-low': todo.priority === 'Low'}">{{todo.priority}}</div>
 
             <button mat-stroked-button color="primary" style="margin-right: 20px"
                 routerLink="/edit-todo/{{todo?.todoId}}">Edit</button>

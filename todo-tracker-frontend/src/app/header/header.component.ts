@@ -21,7 +21,7 @@ export class HeaderComponent {
      this.registerService.getUserName().subscribe(
       response => {
         console.log(response);
-        this.userName = response;
+        this.userName = response.split(' ')[0];
       },
       error => {  
         console.log(error);

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TodoDataService } from '../services/todo-data.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-todo',
@@ -14,7 +15,8 @@ export class AddTodoComponent {
 
   constructor(
     private todoDataService: TodoDataService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {}
@@ -24,6 +26,9 @@ export class AddTodoComponent {
       (response) => {
         console.log(response);
         this.router.navigate(['dashboard']);
+        this._snackBar.open('Todo added!', 'Success', {
+          duration: 3000,
+        });
       },
       (error) => {
         console.log(error);

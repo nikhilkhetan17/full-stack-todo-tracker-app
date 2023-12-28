@@ -48,18 +48,25 @@
   right: 25px;
 }
 
-/* .completed {
+.completed {
   color: #27ae60;
 }
 
+.not-completed {
+  color: #ff6b5b;
+}
+
 .priority-high {
-  color: #e74c3c;
+  color: #f13e2a;
+  font-family: cursive;
 }
 
 .priority-medium {
   color: #f39c12;
+  font-family: cursive;
 }
 
 .priority-low {
-  color: #3498db;
-} */
+  color: #3de712;
+  font-family: cursive;
+}

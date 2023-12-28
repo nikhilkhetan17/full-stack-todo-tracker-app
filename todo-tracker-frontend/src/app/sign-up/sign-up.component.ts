@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RegisterService } from '../services/register.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,8 @@ export class SignUpComponent {
 
   constructor(
     private registerService: RegisterService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   onSubmit() {
@@ -28,9 +30,15 @@ export class SignUpComponent {
       (response) => {
         console.log(response);
         this.router.navigate(['login']);
+        this._snackBar.open('User Registered Successfully!', 'Success', {
+          duration: 3000,
+        });
       },
       (err) => {
         console.log(err);
+        this._snackBar.open('User Already Exists!', 'Error!', {
+          duration: 3000,
+        })
       }
     );
   }
