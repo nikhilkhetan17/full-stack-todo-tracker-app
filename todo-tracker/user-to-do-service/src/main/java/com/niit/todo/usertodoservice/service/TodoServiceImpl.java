@@ -110,9 +110,10 @@ public class TodoServiceImpl implements ITodoService {
                     todoListFields.setTodoDescription(todoList.getTodoDescription());
                 if (todoList.getTargetDate() != null)
                     todoListFields.setTargetDate(todoList.getTargetDate());
-                Boolean isCompleted = todoList.isTodoCompleted();
-                if (isCompleted != null)
-                    todoListFields.setTodoCompleted(todoList.isTodoCompleted());
+                if(todoList.getTodoCompleted() != null)
+                    todoListFields.setTodoCompleted(todoList.getTodoCompleted());
+                if(todoList.getPriority() != null)
+                    todoListFields.setPriority(todoList.getPriority());
                 flag = true;
             }
         }

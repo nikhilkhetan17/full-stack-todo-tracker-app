@@ -1,24 +1,42 @@
-<div style="margin-left: 20px;">
-    <form (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="fill">
-            <input type="text" matInput required [(ngModel)]="todo.todoName" placeholder="Todo Name" name="todoName">
-        </mat-form-field><br>
-    
-        <mat-form-field appearance="fill">
-            <input type="text" matInput required [(ngModel)]="todo.todoDescription" placeholder="Todo Description" name="todoDescription">
-        </mat-form-field><br>
-    
-        <mat-form-field appearance="fill">
-            <input type="text" matInput required [(ngModel)]="todo.todoCompleted" placeholder="todoCompleted" name="todoCompleted">
-        </mat-form-field><br>
-    
-        <mat-form-field appearance="outline">
-            <mat-label>Reminder date</mat-label>
-            <input matInput [matDatepicker]="picker" required [(ngModel)]="todo.targetDate" [min]="minDate" name="targetDate" required>
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field><br>
-        <button type="submit" mat-raised-button color="primary">Save</button>
-    </form>
+<div class="form-wrapper">
+    <img src="../../assets/images/add-todo.svg" alt="add-todo" class="add-image">
+    <div class="form-container">
+        <h1>Add Todo</h1>
+        <form (ngSubmit)="onSubmit()" class="todo-form">
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Todo Name</mat-label>
+                <input type="text" matInput required [(ngModel)]="todo.todoName" name="todoName">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field" class="custom-height">
+                <mat-label>Todo Description</mat-label>
+                <input type="text" matInput required [(ngModel)]="todo.todoDescription" name="todoDescription">
+            </mat-form-field>
+
+            <!-- <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Todo Completed</mat-label>
+                <input type="text" matInput required [(ngModel)]="todo.todoCompleted" name="todoCompleted">
+            </mat-form-field> -->
+
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Todo Completed ?</mat-label>
+                <mat-select [(ngModel)]="todo.todoCompleted" name="food">
+                    <mat-option [value]="true">Yes</mat-option>
+                    <mat-option [value]="false">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Reminder date</mat-label>
+                <input matInput [matDatepicker]="picker" required [(ngModel)]="todo.targetDate" [min]="minDate" name="targetDate" required>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <button type="submit" mat-raised-button color="primary" class="submit-button">Save</button>
+            <button type="button" routerLink="/dashboard" mat-raised-button color="warn"
+                class="submit-button">Cancel</button>
+        </form>
+    </div>
 </div>

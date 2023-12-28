@@ -1,21 +1,29 @@
-<button mat-raised-button color="primary" class="add-todo" routerLink="/add-todo">Add Todo</button>
+<button mat-fab color="primary" class="add-todo" routerLink="/add-todo" id="fixed"><mat-icon>add</mat-icon></button>
 
 <div class="card-container">
-    <mat-card class="card-content" *ngFor="let todo of todos">
-        <mat-card-header>
-            <p class="todo-title">{{todo.todoName}}</p>
-            <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-            <!-- <mat-card-subtitle>Target Date: {{todo.targetDate | date}}</mat-card-subtitle> -->
-        </mat-card-header>
-        <mat-card-content>
-            <p>{{todo.todoDescription}}</p>
-            <p>Target Date: {{todo.targetDate | date}}</p>
-            <p>Is Todo Completed: {{todo.todoCompleted}}</p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary" style="margin-right: 20px" 
-            routerLink="/edit-todo/{{todo?.todoId}}">Edit</button>
-            <button mat-raised-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button>
-        </mat-card-actions>
-    </mat-card>
+    <div class="card" *ngFor="let todo of todos">
+        <div class="card-header">
+            To-Do List
+        </div>
+        <div class="card-body">
+            <div class="label">To-Do Name</div>
+            <div class="value">{{todo.todoName}}</div>
+
+            <div class="label">To-Do Description</div>
+            <div class="value">{{todo.todoDescription}}.</div>
+
+            <div class="label">Completion Date</div>
+            <div class="value">{{todo.targetDate | date}}</div>
+
+            <div class="label">To-Do Completed ?</div>
+            <div class="value completed">{{todo.todoCompleted}}</div>
+
+            <div class="label">Priority</div>
+            <div class="value priority-high">{{todo.priority}}</div>
+
+            <button mat-stroked-button color="primary" style="margin-right: 20px"
+                routerLink="/edit-todo/{{todo?.todoId}}">Edit</button>
+            <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button>
+        </div>
+    </div>
 </div>

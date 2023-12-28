@@ -4,8 +4,7 @@
         <div class="card">
             <div class="card_title">
                 <h1>Login</h1>
-                <span>Don't have an account?<button mat-button color="primary" routerLink="/sign-up">Sign
-                        Up</button></span>
+                <span>Don't have an account?<button mat-button color="primary" routerLink="/sign-up">Sign Up</button></span>
             </div>
             <div class="form">
                 <form (ngSubmit)="onSubmit()">
@@ -26,8 +25,7 @@
                         <!-- <button mat-raised-button color="warn" type="reset">Reset</button> -->
                     </div>
                 </form>
-                <br>
-                {{credentials | json}}
+                <!-- {{credentials | json}} -->
             </div>
         </div>
     </div>

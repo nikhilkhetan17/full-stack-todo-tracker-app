@@ -11,14 +11,16 @@ public class TodoList {
     private String todoName;
     private String todoDescription;
     private Date targetDate;
-    private boolean isTodoCompleted;
+    private String todoCompleted;
+    private String priority;
 
-    public TodoList(UUID todoId, String todoName, String todoDescription, Date targetDate, boolean isTodoCompleted) {
+    public TodoList(UUID todoId, String todoName, String todoDescription, Date targetDate, String todoCompleted, String priority) {
         this.todoId = todoId;
         this.todoName = todoName;
         this.todoDescription = todoDescription;
         this.targetDate = targetDate;
-        this.isTodoCompleted = isTodoCompleted;
+        this.todoCompleted = todoCompleted;
+        this.priority = priority;
     }
 
     public TodoList() {
@@ -56,12 +58,20 @@ public class TodoList {
         this.targetDate = targetDate;
     }
 
-    public boolean isTodoCompleted() {
-        return isTodoCompleted;
+    public String getTodoCompleted() {
+        return todoCompleted;
     }
 
-    public void setTodoCompleted(boolean todoCompleted) {
-        isTodoCompleted = todoCompleted;
+    public void setTodoCompleted(String todoCompleted) {
+        this.todoCompleted = todoCompleted;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 
     @Override
@@ -71,7 +81,7 @@ public class TodoList {
                 ", todoName='" + todoName + '\'' +
                 ", todoDescription='" + todoDescription + '\'' +
                 ", targetDate=" + targetDate +
-                ", isTodoCompleted=" + isTodoCompleted +
+                ", todoCompleted=" + todoCompleted +
                 '}';
     }
 }

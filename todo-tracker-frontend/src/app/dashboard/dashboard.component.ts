@@ -6,8 +6,9 @@ export class Todo {
     public todoName: string,
     public todoDescription: string,
     public targetDate: Date,
-    public todoCompleted: boolean,
-    public todoId: any
+    public todoCompleted: string,
+    public todoId: any,
+    public priority: string
   ) {}
 }
 

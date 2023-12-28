@@ -10,4 +10,11 @@
 .logo {
   text-decoration: none;
   color: inherit;
+  margin-right: 20px;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
