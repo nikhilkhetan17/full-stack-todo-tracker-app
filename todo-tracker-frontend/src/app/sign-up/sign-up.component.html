@@ -7,25 +7,35 @@
                 <span>Already have an account? <button mat-button color="primary" routerLink="/login">Sign In</button></span>
             </div>
             <div class="form">
-                <form (ngSubmit)="onSubmit()">
+                <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
                     <mat-form-field appearance="outline">
                         <mat-label>Full Name</mat-label>
-                        <input matInput required [(ngModel)]="register.userName" name="userName">
+                        <input matInput required [(ngModel)]="register.userName" name="userName" #userName="ngModel" minlength="3" maxlength="30" pattern="^[A-Za-z ]+$">
+                        <mat-error *ngIf="userName.errors?.['required']">Name is required.</mat-error>
+                        <mat-error *ngIf="userName.errors?.['minlength']">Name must contain at least 3 characters.</mat-error>
+                        <mat-error *ngIf="userName.errors?.['pattern']">Enter a valid name.</mat-error>
                     </mat-form-field>
+
                     <mat-form-field appearance="outline">
                         <mat-label>Email Id</mat-label>
-                        <input matInput required [(ngModel)]="register.emailId" name="emailId">
+                        <input matInput required [(ngModel)]="register.emailId" name="emailId" #emailId="ngModel" pattern="^[a-zA-Z_][a-zA-Z0-9_]*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$">
+                        <mat-error *ngIf="emailId.errors?.['required']">Email id is required.</mat-error>
+                        <mat-error *ngIf="emailId.errors?.['pattern']">Enter valid email id.</mat-error>
                     </mat-form-field>
+
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
                         <!-- <input matInput required type="password" [(ngModel)]="register.password" name="password"> -->
-                        <input matInput [type]="hide ? 'password' : 'text'" required type="password" [(ngModel)]="register.password" name="password">
+                        <input matInput [type]="hide ? 'password' : 'text'" required type="password" [(ngModel)]="register.password" name="password" #password="ngModel" minlength="6">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide" type="button">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
+                        <mat-error *ngIf="password.errors?.['required']">Password is required.</mat-error>
+                        <mat-error *ngIf="password.errors?.['minlength']">Minimum 6 characters required.</mat-error>
                     </mat-form-field>
+
                     <div class="btn-container">
-                        <button mat-raised-button color="primary" type="submit">Sign Up</button>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
                         <button mat-raised-button color="warn" type="reset">Reset</button>
                     </div>
                 </form>

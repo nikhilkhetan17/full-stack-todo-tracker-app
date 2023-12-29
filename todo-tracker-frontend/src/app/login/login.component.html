@@ -7,21 +7,23 @@
                 <span>Don't have an account?<button mat-button color="primary" routerLink="/sign-up">Sign Up</button></span>
             </div>
             <div class="form">
-                <form (ngSubmit)="onSubmit()">
+                <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
                     <mat-form-field appearance="outline">
                         <mat-label>Email Id</mat-label>
-                        <input matInput required [(ngModel)]="credentials.emailId" name="emailId">
+                        <input matInput required [(ngModel)]="credentials.emailId" name="emailId" #emailId="ngModel">
+                        <mat-error *ngIf="emailId.errors?.['required']">Email id is required.</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
                         <!-- <input matInput required type="password" [(ngModel)]="credentials.password" name="password"> -->
-                        <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="credentials.password">
+                        <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="credentials.password" required #password="ngModel">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide" type="button">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
+                        <mat-error *ngIf="password.errors?.['required']">Password is required.</mat-error>
                     </mat-form-field>
                     <div class="btn-container">
-                        <button mat-raised-button color="primary" type="submit">Sign In</button>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Sign In</button>
                         <!-- <button mat-raised-button color="warn" type="reset">Reset</button> -->
                     </div>
                 </form>
