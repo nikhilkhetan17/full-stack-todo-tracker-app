@@ -9,7 +9,8 @@ export class Todo {
     public targetDate: Date,
     public todoCompleted: string,
     public todoId: any,
-    public priority: string
+    public priority: string,
+    public category: string
   ) {}
 }
 
@@ -20,6 +21,7 @@ export class Todo {
 })
 export class DashboardComponent {
   todos: Todo[] = [];
+  categoryFilter: string = "";
 
   constructor(private todoDataService: TodoDataService, private _snackBar: MatSnackBar){}
 
@@ -71,5 +73,20 @@ export class DashboardComponent {
       console.log('Deletion canceled by user.');
     }
   }
-  
+
+  onFilter(filter: string) {
+    this.categoryFilter = filter;
+    this.todoDataService.getAllTodos().subscribe({
+      next: (data: any) => {
+        if (this.categoryFilter === "All") {
+          // If the filter is "All," set todos to the entire data
+          this.todos = data;
+        } else {
+          // Filter todos based on the priority
+          this.todos = data.filter((todo: any) => todo.priority === this.categoryFilter);
+        }
+      }
+    })
+  }
+
 }

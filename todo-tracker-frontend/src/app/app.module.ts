@@ -23,10 +23,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { EditTodoComponent } from './edit-todo/edit-todo.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
+import { FilterComponent } from './filter/filter.component';
 
 
 @NgModule({
@@ -40,6 +42,7 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
     DashboardComponent,
     EditTodoComponent,
     AddTodoComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatChipsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
   bootstrap: [AppComponent],

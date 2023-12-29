@@ -9,7 +9,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-todo.component.css'],
 })
 export class AddTodoComponent {
-  todo: any = {};
+  todo: any = {
+    todoCompleted: 'No',
+  };
 
   minDate: Date = new Date();
 

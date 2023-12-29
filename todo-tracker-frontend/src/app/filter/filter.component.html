@@ -1,0 +1,19 @@
+<!-- <mat-form-field appearance="outline">
+    <mat-label>Filter</mat-label>
+    <mat-select [(ngModel)]="filterByCategory" (ngModelChange)="onfilter()">
+        <mat-option value="All">All</mat-option>
+        <mat-option value="Low">Low</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="High">High</mat-option>
+    </mat-select>
+</mat-form-field> -->
+
+
+<div>
+    <mat-chip-listbox [(ngModel)]="filterByCategory" (ngModelChange)="onfilter()">
+        <mat-chip-option value="All">All</mat-chip-option>
+        <mat-chip-option value="Low">Low</mat-chip-option>
+        <mat-chip-option value="Medium">Medium</mat-chip-option>
+        <mat-chip-option value="High">High</mat-chip-option>
+      </mat-chip-listbox>
+</div>

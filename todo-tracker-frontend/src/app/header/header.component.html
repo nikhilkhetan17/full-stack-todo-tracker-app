@@ -11,6 +11,6 @@
 
         <button mat-button *ngIf="this.loginService.isLoggedIn()">Hi, {{userName}}</button>
         
-        <button mat-stroked-button color="accent" *ngIf="this.loginService.isLoggedIn()" (click)="logoutUser()">Logout</button>
+        <button mat-raised-button color="accent" *ngIf="this.loginService.isLoggedIn()" (click)="logoutUser()">Logout</button>
     </div>
 </mat-toolbar>

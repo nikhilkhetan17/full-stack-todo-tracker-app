@@ -13,9 +13,9 @@
   min-width: 300px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  margin: 20px 18px;
+  margin: 15px 15px;
   /* min-height: 410px; */
 }
 
@@ -50,23 +50,28 @@
 
 .completed {
   color: #27ae60;
+  font-weight: 500;
 }
 
 .not-completed {
   color: #ff6b5b;
+  font-weight: 500;
 }
 
 .priority-high {
   color: #f13e2a;
   font-family: cursive;
+  font-weight: 500;
 }
 
 .priority-medium {
   color: #f39c12;
   font-family: cursive;
+  font-weight: 500;
 }
 
 .priority-low {
   color: #3de712;
   font-family: cursive;
+  font-weight: 500;
 }

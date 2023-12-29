@@ -1,3 +1,5 @@
+<app-filter (filteredCategory)="onFilter($event)"></app-filter>
+
 <button mat-fab color="primary" class="add-todo" routerLink="/add-todo" id="fixed"><mat-icon>add</mat-icon></button>
 
 <div class="card-container">
@@ -6,16 +8,16 @@
             To-Do List
         </div>
         <div class="card-body">
-            <div class="label">To-Do Name</div>
+            <div class="label">Task Name</div>
             <div class="value">{{todo.todoName}}</div>
 
-            <div class="label">To-Do Description</div>
+            <div class="label">Task Description</div>
             <div class="value">{{todo.todoDescription}}.</div>
 
             <div class="label">Completion Date</div>
             <div class="value">{{todo.targetDate | date}}</div>
 
-            <div class="label">To-Do Completed ?</div>
+            <div class="label">Task Completed ?</div>
             <div class="value completed" [ngClass]="{'completed': todo.todoCompleted === 'Yes', 'not-completed': todo.todoCompleted === 'No'}">{{todo.todoCompleted}}</div>
 
             <div class="label">Priority</div>
@@ -23,7 +25,8 @@
 
             <button mat-stroked-button color="primary" style="margin-right: 20px"
                 routerLink="/edit-todo/{{todo?.todoId}}">Edit</button>
-            <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button>
+            <!-- <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button> -->
+            <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)" [disabled]="todo.todoCompleted === 'No'">Delete</button>
         </div>
     </div>
 </div>
