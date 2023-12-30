@@ -18,7 +18,7 @@
 
                     <mat-form-field appearance="outline">
                         <mat-label>Email Id</mat-label>
-                        <input matInput required [(ngModel)]="register.emailId" name="emailId" #emailId="ngModel" pattern="^[a-zA-Z_][a-zA-Z0-9_]*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$">
+                        <input matInput required [(ngModel)]="register.emailId" name="emailId" #emailId="ngModel" pattern="^[a-zA-Z_][a-zA-Z0-9_]*@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$">
                         <mat-error *ngIf="emailId.errors?.['required']">Email id is required.</mat-error>
                         <mat-error *ngIf="emailId.errors?.['pattern']">Enter valid email id.</mat-error>
                     </mat-form-field>
@@ -26,12 +26,12 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
                         <!-- <input matInput required type="password" [(ngModel)]="register.password" name="password"> -->
-                        <input matInput [type]="hide ? 'password' : 'text'" required type="password" [(ngModel)]="register.password" name="password" #password="ngModel" minlength="6">
+                        <input matInput [type]="hide ? 'password' : 'text'" required type="password" [(ngModel)]="register.password" name="password" #password="ngModel" pattern="^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?/~\\-])\S{6,}$">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide" type="button">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
                         <mat-error *ngIf="password.errors?.['required']">Password is required.</mat-error>
-                        <mat-error *ngIf="password.errors?.['minlength']">Minimum 6 characters required.</mat-error>
+                        <mat-error *ngIf="password.errors?.['pattern']">Password must be 6+ characters with at least one special character</mat-error>
                     </mat-form-field>
 
                     <div class="btn-container">

@@ -8,11 +8,14 @@
             </div>
             <div class="form">
                 <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
                     <mat-form-field appearance="outline">
                         <mat-label>Email Id</mat-label>
-                        <input matInput required [(ngModel)]="credentials.emailId" name="emailId" #emailId="ngModel">
+                        <input matInput required [(ngModel)]="credentials.emailId" name="emailId" #emailId="ngModel" pattern="^[a-zA-Z_][a-zA-Z0-9_]*@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$">
                         <mat-error *ngIf="emailId.errors?.['required']">Email id is required.</mat-error>
+                        <mat-error *ngIf="emailId.errors?.['pattern']">Enter valid email id.</mat-error>
                     </mat-form-field>
+
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
                         <!-- <input matInput required type="password" [(ngModel)]="credentials.password" name="password"> -->
@@ -22,6 +25,7 @@
                         </button>
                         <mat-error *ngIf="password.errors?.['required']">Password is required.</mat-error>
                     </mat-form-field>
+                    
                     <div class="btn-container">
                         <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Sign In</button>
                         <!-- <button mat-raised-button color="warn" type="reset">Reset</button> -->

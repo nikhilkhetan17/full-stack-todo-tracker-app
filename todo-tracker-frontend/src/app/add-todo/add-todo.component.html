@@ -2,44 +2,53 @@
     <img src="../../assets/images/add-todo.svg" alt="add-todo" class="add-image">
     <div class="form-container">
         <h1>Add Todo</h1>
-        <form (ngSubmit)="onSubmit()" class="todo-form">
+        <form (ngSubmit)="onSubmit()" class="todo-form" #addTodo="ngForm">
+
             <mat-form-field appearance="fill" class="form-field">
-                <mat-label>Todo Name</mat-label>
-                <input type="text" matInput required [(ngModel)]="todo.todoName" name="todoName">
+                <mat-label>Task Name</mat-label>
+                <input type="text" matInput required [(ngModel)]="todo.todoName" name="todoName" #todoName="ngModel">
+                <mat-error *ngIf="todoName.errors?.['required']">Task name is required.</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="form-field">
-                <mat-label>Todo Description</mat-label>
-                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="4" required [(ngModel)]="todo.todoDescription" name="todoDescription"></textarea>
+                <mat-label>Task Description</mat-label>
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3"
+                    cdkAutosizeMaxRows="4" required [(ngModel)]="todo.todoDescription" name="todoDescription"
+                    #todoDescription="ngModel" maxlength="200"></textarea>
+                <mat-error *ngIf="todoDescription.errors?.['required']">Task description is required.</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="form-field">
-                <mat-label>Todo Completed ?</mat-label>
-                <mat-select [(ngModel)]="todo.todoCompleted" name="todoCompleted" required>
-                    <!-- <mat-option value="Yes">Yes</mat-option> -->
+            <!-- <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Task Completed ?</mat-label>
+                <mat-select [(ngModel)]="todo.todoCompleted" name="todoCompleted" required #todoCompleted="ngModel">
+                    <mat-option value="Yes">Yes</mat-option>
                     <mat-option value="No">No</mat-option>
                 </mat-select>
-            </mat-form-field>
+                <mat-error *ngIf="todoCompleted.errors?.['required']">Task completed? required.</mat-error>
+            </mat-form-field> -->
 
             <mat-form-field appearance="fill" class="form-field">
                 <mat-label>Priority</mat-label>
-                <mat-select [(ngModel)]="todo.priority" name="priority" required>
+                <mat-select [(ngModel)]="todo.priority" name="priority" required #priority="ngModel">
                     <mat-option value="Low">Low</mat-option>
                     <mat-option value="Medium">Medium</mat-option>
                     <mat-option value="High">High</mat-option>
                 </mat-select>
+                <mat-error *ngIf="priority.errors?.['required']">Task priority is required.</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="form-field">
-                <mat-label>Reminder date</mat-label>
+                <mat-label>Completion date</mat-label>
                 <input matInput [matDatepicker]="picker" required [(ngModel)]="todo.targetDate" [min]="minDate"
-                    name="targetDate" required>
+                    name="targetDate" #targetDate="ngModel">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="targetDate.errors?.['required']">Todo completion date is required.</mat-error>
             </mat-form-field>
 
-            <button type="submit" mat-raised-button color="primary" class="submit-button">Save</button>
+            <button type="submit" mat-raised-button color="primary" class="submit-button"
+                [disabled]="addTodo.invalid">Save</button>
             <button type="button" routerLink="/dashboard" mat-raised-button color="warn"
                 class="submit-button">Cancel</button>
         </form>
