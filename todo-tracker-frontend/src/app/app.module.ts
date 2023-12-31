@@ -29,6 +29,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { EditTodoComponent } from './edit-todo/edit-todo.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { FilterComponent } from './filter/filter.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { FilterComponent } from './filter/filter.component';
     EditTodoComponent,
     AddTodoComponent,
     FilterComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

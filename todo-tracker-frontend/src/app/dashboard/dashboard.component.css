@@ -5,8 +5,9 @@
 .card-container {
   display: flex;
   justify-content: flex-start;
-  /* gap: 30px 40px; */
+  gap: 30px 30px;
   flex-wrap: wrap;
+  padding: 20px;
 }
 
 .card {
@@ -15,7 +16,7 @@
   border-radius: 8px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  margin: 15px 15px;
+  /* margin: 15px 15px; */
   /* min-height: 410px; */
 }
 

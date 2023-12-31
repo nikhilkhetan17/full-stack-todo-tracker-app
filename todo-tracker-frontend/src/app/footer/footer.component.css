@@ -1,0 +1,31 @@
+.footer {
+  background-color: #3F51B5;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer span {
+  margin: 0 5px;
+  font-size: 15px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.email-link {
+  color: #fff;
+  text-decoration: none;
+  /* font-weight: 500; */
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
