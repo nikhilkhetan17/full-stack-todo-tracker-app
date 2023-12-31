@@ -3,8 +3,8 @@
 }
 
 .button-accent {
-    display: flex;
-    column-gap: 20px;
+  display: flex;
+  column-gap: 20px;
 }
 
 .logo {
@@ -17,4 +17,11 @@ mat-toolbar {
   position: sticky;
   top: 0;
   z-index: 2;
+}
+
+@media screen and (max-width: 460px) {
+  .logo {
+    display: none;
+    /* font-size: 15px; */
+  }
 }

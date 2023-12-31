@@ -6,24 +6,35 @@
 }
 
 .wrapper {
-    display: flex;
-    column-gap: 60px;
-    flex-wrap: wrap;
+  display: flex;
+  column-gap: 60px;
+  flex-wrap: wrap;
 }
 
 div h1 {
-    font-size: 30px;
-    font-weight: 500;
+  font-size: 30px;
+  font-weight: 500;
 }
 div p {
-    font-size: 17px;
-    letter-spacing: 1px;
-    font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  /* text-align: justify; */
 }
 
 .right-text {
-    margin-top: 40px;
-    /* padding-right: 5px; */
-    max-width: 660px;
-    /* border: 1px solid red; */
+  margin-top: 40px;
+  /* padding-right: 5px; */
+  max-width: 660px;
+  /* border: 1px solid red; */
+}
+
+/* -----------------media query----------------- */
+
+@media screen and (max-width: 1320px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
 }
