@@ -6,6 +6,7 @@ import com.niit.todo.usertodoservice.exception.TodoAlreadyExistsException;
 import com.niit.todo.usertodoservice.exception.TodoNotFoundException;
 import com.niit.todo.usertodoservice.exception.UserAlreadyExistsException;
 import com.niit.todo.usertodoservice.exception.UserNotFoundException;
+import com.niit.todo.usertodoservice.proxy.EmailProxy;
 import com.niit.todo.usertodoservice.proxy.UserProxy;
 import com.niit.todo.usertodoservice.repository.UserTodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,13 @@ public class TodoServiceImpl implements ITodoService {
 
     private UserTodoRepository userTodoRepository;
     private UserProxy userProxy;
+    private EmailProxy emailProxy;
 
     @Autowired
-    public TodoServiceImpl(UserTodoRepository userTodoRepository, UserProxy userProxy) {
+    public TodoServiceImpl(UserTodoRepository userTodoRepository, UserProxy userProxy, EmailProxy emailProxy) {
         this.userTodoRepository = userTodoRepository;
         this.userProxy = userProxy;
+        this.emailProxy = emailProxy;
     }
 
     //  Register a user
@@ -33,6 +36,7 @@ public class TodoServiceImpl implements ITodoService {
             throw new UserAlreadyExistsException();
         }
 
+        String senaMail = emailProxy.sendMail(user);
         User savedUser = userTodoRepository.save(user);
         if(!(savedUser.getEmailId().isEmpty())) {
             ResponseEntity<?> responseEntity = userProxy.saveUser(user);

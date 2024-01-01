@@ -12,8 +12,15 @@ import { Todo } from '../models/todo';
 export class EditTodoComponent {
   // todo: any = {};
   todo: Todo = {};
-
   minDate: Date = new Date();
+
+  editStatus: boolean = true;
+  canDeactivate() {
+    if (!this.editStatus) {
+      this.editStatus = confirm("Changes are not saved. Do you still want to leave?");
+    }
+    return this.editStatus;
+  }
 
   constructor(
     private todoDataService: TodoDataService,
@@ -25,10 +32,11 @@ export class EditTodoComponent {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params) => {
       let todoId = params.get('id') ?? 0;
+      // console.log(todoId);
       this.todoDataService.getSingleTodo(todoId).subscribe((response: any) => {
         this.todo = response.todoList[0];
         console.log(response.todoList[0]);
-        // this.editStatus = false;
+        this.editStatus = false;
       });
     });
   }
@@ -45,7 +53,7 @@ export class EditTodoComponent {
       (response: any) => {
         // this.todo = response;
         console.log(response);
-        // this.editStatus = true;
+        this.editStatus = true;
         this.router.navigate(['dashboard']);
         this._snackBar.open('Todo updated!', 'Success', {
           duration: 3000,

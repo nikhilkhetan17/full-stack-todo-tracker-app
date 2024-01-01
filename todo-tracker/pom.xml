@@ -54,6 +54,7 @@
         <module>UserAuthenticationService</module>
         <module>apiGatewayService</module>
         <module>eurekaServer</module>
+        <module>mailservice</module>
     </modules>
 
     <build>

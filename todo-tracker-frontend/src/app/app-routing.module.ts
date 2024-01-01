@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { EditTodoComponent } from './edit-todo/edit-todo.component';
+import { CanDeactivateService } from './services/can-deactivate.service';
 
 const routes: Routes = [
   {
@@ -40,6 +41,7 @@ const routes: Routes = [
     path: 'edit-todo/:id',
     component: EditTodoComponent,
     canActivate: [AuthGuardService],
+    canDeactivate: [CanDeactivateService]
   },
   {
     path: '**',

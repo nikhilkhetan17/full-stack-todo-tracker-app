@@ -4,6 +4,10 @@
   padding: 10px 0;
   text-align: center;
   margin-top: 60px;
+  /* position: sticky; */
+  /* bottom: 0; */
+  /* width: 100%; */
+  /* z-index: -1; */
 }
 
 .footer span {
