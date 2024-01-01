@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TodoDataService } from '../services/todo-data.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Todo } from '../models/todo';
 
 @Component({
   selector: 'app-add-todo',
@@ -9,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-todo.component.css'],
 })
 export class AddTodoComponent {
-  todo: any = {
+  todo: Todo = {
     todoCompleted: 'No',
   };
 

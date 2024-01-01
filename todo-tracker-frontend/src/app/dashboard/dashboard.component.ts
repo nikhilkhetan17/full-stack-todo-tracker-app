@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { TodoDataService } from '../services/todo-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Todo } from '../models/todo';
 
-export class Todo {
-  constructor(
-    public todoName: string,
-    public todoDescription: string,
-    public targetDate: Date,
-    public todoCompleted: string,
-    public todoId: any,
-    public priority: string,
-    public category: string
-  ) {}
-}
+// export class Todo {
+//   constructor(
+//     public todoName: string,
+//     public todoDescription: string,
+//     public targetDate: Date,
+//     public todoCompleted: string,
+//     public todoId: any,
+//     public priority: string,
+//     // public category: string
+//   ) {}
+// }
 
 @Component({
   selector: 'app-dashboard',

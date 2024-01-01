@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Todo } from '../dashboard/dashboard.component';
+// import { Todo } from '../dashboard/dashboard.component';
+import { Todo } from '../models/todo';
 
 @Injectable({
   providedIn: 'root',

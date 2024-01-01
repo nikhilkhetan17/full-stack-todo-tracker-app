@@ -6,6 +6,7 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +18,12 @@ export class LoginComponent {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  credentials = {
-    emailId: '',
-    password: '',
-  };
+  // credentials = {
+  //   emailId: '',
+  //   password: '',
+  // };
+
+  credentials: User = {};
 
   constructor(
     private loginService: LoginService,

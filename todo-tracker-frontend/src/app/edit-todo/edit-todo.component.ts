@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TodoDataService } from '../services/todo-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Todo } from '../models/todo';
 
 @Component({
   selector: 'app-edit-todo',
@@ -9,7 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./edit-todo.component.css'],
 })
 export class EditTodoComponent {
-  todo: any = {};
+  // todo: any = {};
+  todo: Todo = {};
 
   minDate: Date = new Date();
 

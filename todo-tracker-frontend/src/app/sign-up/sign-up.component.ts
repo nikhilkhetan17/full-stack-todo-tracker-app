@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RegisterService } from '../services/register.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,11 +13,13 @@ export class SignUpComponent {
   imageUrl: string = '../assets/images/signup.svg';
   hide = true;
 
-  register = {
-    emailId: '',
-    password: '',
-    userName: '',
-  };
+  // register = {
+  //   emailId: '',
+  //   password: '',
+  //   userName: '',
+  // };
+
+  register: User = {};
 
   constructor(
     private registerService: RegisterService,
@@ -38,7 +41,7 @@ export class SignUpComponent {
         console.log(err);
         this._snackBar.open('User Already Exists!', 'Error!', {
           duration: 3000,
-        })
+        });
       }
     );
   }
