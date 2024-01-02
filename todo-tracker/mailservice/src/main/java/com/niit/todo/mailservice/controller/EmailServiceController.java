@@ -17,13 +17,12 @@ public class EmailServiceController {
 
     //Sending a simple Email
     @PostMapping("/sendMail")
-    public void sendMail(@RequestBody User user) {
-        System.out.println("Resiveduser :" + user);
+    public String sendMail(@RequestBody User user) {
+        System.out.println("ReceivedUser: " + user);
         System.out.println("hi,i'm here");
         String status = emailService.sendMail(user);
-        System.out.println("EmailSendingStatus" + status);
-
-        //return status;
+        System.out.println("EmailSendingStatus " + status);
+        return status;
     }
 
 }

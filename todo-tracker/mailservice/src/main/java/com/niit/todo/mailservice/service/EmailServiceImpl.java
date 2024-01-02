@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailServiceImpl implements EmailService {
+
     private JavaMailSender javaMailSender;
 
     @Autowired
@@ -22,7 +23,6 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public String sendMail(User user) {
-        System.out.println("im here");
         // Try block to check for exceptions
         try {
             // Creating a simple mail message
@@ -30,17 +30,26 @@ public class EmailServiceImpl implements EmailService {
             // Setting up necessary details
             mailMessage.setFrom(senderMail);
             mailMessage.setTo(user.getEmailId());
-            mailMessage.setText("thanks for registoring");
-            mailMessage.setSubject("mail for registration");
+
+            String body = "Dear " + user.getUserName() + ",\n\n";
+            body += "Welcome to Todo Tracker! We are thrilled to have you on board.\n";
+            body += "Thank you for registering and choosing us to help you stay organized.\n\n";
+            body += "Happy task tracking!\n\n";
+            body += "Best regards,\nTodo Tracker Team";
+
+            mailMessage.setSubject("Welcome to Todo Tracker!");
+            mailMessage.setText(body);
             // Sending the mail
             javaMailSender.send(mailMessage);
             System.out.println("im here1");
+            return "Mail Sent Successfully...";
         }
         // Catch block to handle the exceptions
-        catch (Exception exception) {
-            System.out.println(exception);
+        catch (Exception ex) {
+            System.out.println(ex);
+            return "Error in sending mail";
         }
-        return "Mail Sent Successfully...";
+
     }
 
 }

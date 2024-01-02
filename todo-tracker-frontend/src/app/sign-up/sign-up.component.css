@@ -83,3 +83,11 @@
     height: 430px;
   }
 }
+
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+}

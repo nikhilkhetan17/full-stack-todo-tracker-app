@@ -17,7 +17,7 @@ public class AppConfig {
 //                        .uri("http://localhost:8082"))
                         .uri("lb://user-todo-service"))
                 .route(p -> p.path("/mail/**")
-//                        .uri("http://localhost:8080"))
+//                        .uri("http://localhost:8089"))
                         .uri("lb://mail-service"))
                 .build();
     }

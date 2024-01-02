@@ -12,6 +12,7 @@ import { User } from '../models/user';
 export class SignUpComponent {
   imageUrl: string = '../assets/images/signup.svg';
   hide = true;
+  loading = false; // Add loading variable
 
   // register = {
   //   emailId: '',
@@ -28,6 +29,7 @@ export class SignUpComponent {
   ) {}
 
   onSubmit() {
+    this.loading = true; // Set loading to true when registration starts
     // console.log('hello');
     this.registerService.registerUser(this.register).subscribe(
       (response) => {
@@ -41,8 +43,11 @@ export class SignUpComponent {
         console.log(err);
         this._snackBar.open('User Already Exists!', 'Error!', {
           duration: 3000,
-        });
+        })
       }
-    );
+    ).add(() => {
+      this.loading = false; // Set loading to false when registration completes
+    });
   }
+
 }

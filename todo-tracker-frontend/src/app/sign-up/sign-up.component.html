@@ -1,4 +1,12 @@
-<div class="wrapper">
+<!-- Loading indicator -->
+<div *ngIf="loading" class="loading-indicator">
+    <!-- You can use a spinner or any other loading message here -->
+    <!-- <mat-spinner diameter="60"></mat-spinner> -->
+    <img src="../../assets/images/loader.svg" alt="loading">
+    <h2>Loading...</h2>
+</div>
+
+<div class="wrapper" *ngIf="!loading">
     <img src="{{imageUrl}}" alt="signup-image" class="signUp-image">
     <div class="container">
         <div class="card">
