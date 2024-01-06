@@ -30,4 +30,18 @@ export class TodoDataService {
   editTodo(todo: any) {
     return this.http.put(`${this.url}/api/v2/user/todo`, todo);
   }
+
+  // ----------------------Archive------------------
+
+  saveToArchiveList(task: any) {
+    return this.http.post(`${this.url}/api/v2/user/archiveTodo`, task);
+  }
+
+  getAllArchivedTodoList() {
+    return this.http.get(`${this.url}/api/v2/user/archivedTodoList`);
+  }
+
+  deleteTaskFromArchivedTodoList(id: any) {
+    return this.http.delete(`${this.url}/api/v2/user/archivedTodoList/${id}`);
+  }
 }

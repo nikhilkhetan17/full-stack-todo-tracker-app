@@ -90,4 +90,23 @@ export class DashboardComponent {
     })
   }
 
+  // ------------------------------------------------------
+
+  archieveTodo(task: any) {
+    this.todoDataService.saveToArchiveList(task).subscribe(
+      (response) => {
+        console.log('Task archieved successfully:', response);
+        // Update the todoList
+        this.refreshTodos();
+        // this.router.navigateByUrl("/archive")
+        this._snackBar.open('Todo Archived!', 'Success', {
+          duration: 3000,
+        });
+      },
+      (error) => {
+        console.error('Error deleting task:', error);
+      }
+    );
+  }
+
 }

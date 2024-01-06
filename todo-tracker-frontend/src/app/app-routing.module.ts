@@ -9,6 +9,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { EditTodoComponent } from './edit-todo/edit-todo.component';
 import { CanDeactivateService } from './services/can-deactivate.service';
+import { ArchiveComponent } from './archive/archive.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
     component: EditTodoComponent,
     canActivate: [AuthGuardService],
     canDeactivate: [CanDeactivateService]
+  },
+  {
+    path: 'archive',
+    component: ArchiveComponent,
   },
   {
     path: '**',

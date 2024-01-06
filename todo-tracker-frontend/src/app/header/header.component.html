@@ -7,7 +7,10 @@
             *ngIf="!this.loginService.isLoggedIn()">SignUp</button>
 
         <button mat-raised-button color="accent" routerLink="/login"
-            *ngIf="!this.loginService.isLoggedIn()">Login</button>
+            *ngIf="!this.loginService.isLoggedIn()">Login
+        </button>
+
+        <mat-icon *ngIf="this.loginService.isLoggedIn()" matTooltip="Archived Todos" routerLink="/archive" class="archive">archive</mat-icon>
 
         <button mat-button *ngIf="this.loginService.isLoggedIn()">Hi, {{userName}}</button>
         

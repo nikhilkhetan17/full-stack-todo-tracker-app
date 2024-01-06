@@ -25,12 +25,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { EditTodoComponent } from './edit-todo/edit-todo.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { FilterComponent } from './filter/filter.component';
 import { FooterComponent } from './footer/footer.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { FooterComponent } from './footer/footer.component';
     AddTodoComponent,
     FilterComponent,
     FooterComponent,
+    ArchiveComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import { FooterComponent } from './footer/footer.component';
     MatSelectModule,
     MatSnackBarModule,
     MatChipsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTooltipModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
   bootstrap: [AppComponent],

@@ -13,12 +13,14 @@ public class User {
     private String password;
     private String userName;
     private List<TodoList> todoList;
+    private List<TodoList> archievedTodoList;
 
-    public User(String emailId, String password, String userName, List<TodoList> todoList) {
+    public User(String emailId, String password, String userName, List<TodoList> todoList, List<TodoList> archievedTodoList) {
         this.emailId = emailId;
         this.password = password;
         this.userName = userName;
         this.todoList = todoList;
+        this.archievedTodoList = archievedTodoList;
     }
 
     public User() {
@@ -54,6 +56,14 @@ public class User {
 
     public void setTodoList(List<TodoList> todoList) {
         this.todoList = todoList;
+    }
+
+    public List<TodoList> getArchievedTodoList() {
+        return archievedTodoList;
+    }
+
+    public void setArchievedTodoList(List<TodoList> archievedTodoList) {
+        this.archievedTodoList = archievedTodoList;
     }
 
     @Override

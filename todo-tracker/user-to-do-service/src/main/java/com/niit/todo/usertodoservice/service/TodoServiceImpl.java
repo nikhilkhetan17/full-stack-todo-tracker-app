@@ -149,6 +149,7 @@ public class TodoServiceImpl implements ITodoService {
         List<TodoList> todoList = user.getTodoList();
 
         // Search for the todo with the specified todoID
+        //  Uses Java Stream API to filter the TodoList based on the specified todoID.
         Optional<TodoList> optionalTodo = todoList.stream()
                 .filter(todo -> todo.getTodoId().equals(todoID))
                 .findFirst();
@@ -160,5 +161,78 @@ public class TodoServiceImpl implements ITodoService {
         // Assuming that your User class has a method to set the filtered TodoList
         user.setTodoList(Collections.singletonList(optionalTodo.get()));
         return user;
+    }
+
+    //    ----------------------------------Archive-------------------------------------------
+
+    @Override
+    public User saveTodoToArchivedList(TodoList task, String emailId) throws TodoAlreadyExistsException, UserNotFoundException, TodoNotFoundException {
+        if (userTodoRepository.findById(emailId).isEmpty()) {
+            throw new UserNotFoundException();
+        }
+
+        User user = userTodoRepository.findById(emailId).get();
+
+        // Check if the task already exists in the user's taskList
+        if (user.getArchievedTodoList() != null && user.getArchievedTodoList().stream().anyMatch(t -> t.getTodoId().equals(task.getTodoId()))) {
+            throw new TodoAlreadyExistsException();
+        }
+
+        // Add the task to the user's archivedTaskList
+        if (user.getArchievedTodoList() == null) {
+            user.setArchievedTodoList(Collections.singletonList(task));
+        } else {
+            List<TodoList> tasks = new ArrayList<>(user.getArchievedTodoList());
+            tasks.add(task);
+            user.setArchievedTodoList(tasks);
+        }
+        //save new task into archiveList
+        userTodoRepository.save(user);
+
+        //code to remove the task from taskList after adding to archivedTaskList
+        UUID todoId = task.getTodoId();
+        User updateUser = deleteTodo(emailId, todoId);
+
+        return updateUser;
+    }
+
+    @Override
+    public List<TodoList> getAllTodosFromArchievedList(String emailId) throws UserNotFoundException {
+        if (userTodoRepository.findById(emailId).isEmpty()) {
+            throw new UserNotFoundException();
+        }
+
+        User user = userTodoRepository.findById(emailId).get();
+
+        // Return the list of tracks in the user's track list
+        return user.getArchievedTodoList();
+    }
+
+    @Override
+    public User deleteTodoFromArchivedTodoList(String emailId, UUID taskId) throws TodoNotFoundException, UserNotFoundException {
+        if (userTodoRepository.findById(emailId).isEmpty()) {
+            throw new UserNotFoundException();
+        }
+
+        User user = userTodoRepository.findById(emailId).get();
+
+        List<TodoList> tasks = user.getArchievedTodoList();
+        boolean taskIdIsPresent = false;
+
+        // Check if the provided trackId exists in the user's track list
+        for (TodoList task : tasks) {
+            if (task.getTodoId().equals(taskId)){
+                taskIdIsPresent = true;
+                tasks.remove(task);
+                break;
+            }
+        }
+
+        if (!taskIdIsPresent) {
+            throw new TodoNotFoundException();
+        }
+
+        user.setArchievedTodoList(tasks);
+        return userTodoRepository.save(user);
     }
 }

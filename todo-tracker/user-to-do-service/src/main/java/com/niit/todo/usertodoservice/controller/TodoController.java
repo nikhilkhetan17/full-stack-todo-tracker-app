@@ -2,6 +2,7 @@ package com.niit.todo.usertodoservice.controller;
 
 import com.niit.todo.usertodoservice.domain.TodoList;
 import com.niit.todo.usertodoservice.domain.User;
+import com.niit.todo.usertodoservice.exception.TodoAlreadyExistsException;
 import com.niit.todo.usertodoservice.exception.TodoNotFoundException;
 import com.niit.todo.usertodoservice.exception.UserAlreadyExistsException;
 import com.niit.todo.usertodoservice.exception.UserNotFoundException;
@@ -134,5 +135,52 @@ public class TodoController {
         return responseEntity;
     }
 
+    //    ------------------------Archive-------------------------------
+
+    @PostMapping("user/archiveTodo") //------------
+    public ResponseEntity<?> saveTaskToArchivedList(@RequestBody TodoList task, HttpServletRequest request) throws TodoAlreadyExistsException, UserNotFoundException, TodoNotFoundException {
+        // add a task to a specific user archivedTaskList, return 201 status if task is saved else 500 status
+        try {
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.saveTodoToArchivedList(task, id), HttpStatus.CREATED);
+        } catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
+        } catch (TodoAlreadyExistsException e) {
+            throw new TodoAlreadyExistsException();
+        } catch (TodoNotFoundException e) {
+            throw new TodoNotFoundException();
+        }
+        return responseEntity;
+    }
+
+    @GetMapping("user/archivedTodoList") //------------
+    public ResponseEntity<?> getAllTasksFromArchivedList(HttpServletRequest request) {
+        // display all the task of a specific user from archivedTaskList, extract user id from claims,
+        // return 200 status if user is saved else 500 status
+        try {
+
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.getAllTodosFromArchievedList(id), HttpStatus.OK);
+        } catch (Exception e) {
+//            e.printStackTrace();
+            responseEntity = new ResponseEntity<>("Cannot fetch Archived todo list!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return responseEntity;
+    }
+
+    @DeleteMapping("user/archivedTodoList/{todoId}") //-----------
+    public ResponseEntity<?> deleteTaskFromArchivedList(@PathVariable UUID todoId, HttpServletRequest request) throws TodoNotFoundException, UserNotFoundException {
+
+        try {
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.deleteTodoFromArchivedTodoList(id, todoId), HttpStatus.OK);
+        } catch (TodoNotFoundException e) {
+            throw new TodoNotFoundException();
+        } catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
+        }
+        return responseEntity;
+    }
 
 }

@@ -6,6 +6,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+/*
+ HTTP interceptor is responsible for adding an Authorization header with a Bearer token to outgoing requests, based on the token retrieved from the LoginService.
+*/
 export class HttpInterceptorService implements HttpInterceptor {
 
   constructor(private loginService: LoginService) { }

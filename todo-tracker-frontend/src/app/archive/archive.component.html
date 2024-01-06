@@ -1,7 +1,5 @@
 <app-filter (filteredCategory)="onFilter($event)"></app-filter>
 
-<button mat-fab color="primary" class="add-todo" routerLink="/add-todo" id="fixed"><mat-icon>add</mat-icon></button>
-
 <div class="card-container">
     <div class="card" *ngFor="let todo of todos">
         <div class="card-header">
@@ -23,12 +21,8 @@
             <div class="label">Priority</div>
             <div class="value" [ngClass]="{'priority-high': todo.priority === 'High', 'priority-medium': todo.priority === 'Medium', 'priority-low': todo.priority === 'Low'}">{{todo.priority}}</div>
 
-            <button mat-stroked-button color="primary" style="margin-right: 15px"
-                routerLink="/edit-todo/{{todo?.todoId}}">Edit</button>
             <!-- <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button> -->
-            <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)" [disabled]="todo.todoCompleted === 'No'">Delete</button>
-
-            <button mat-stroked-button color="accent" (click)="archieveTodo(todo)" style="margin-left: 15px" [disabled]="todo.todoCompleted === 'No'">Archive</button>
+            <button mat-stroked-button color="warn" (click)="deleteTodoArchive(todo.todoId)" [disabled]="todo.todoCompleted === 'No'">Delete</button>
         </div>
     </div>
 </div>
