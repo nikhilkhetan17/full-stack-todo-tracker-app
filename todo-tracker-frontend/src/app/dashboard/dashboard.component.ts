@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TodoDataService } from '../services/todo-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Todo } from '../models/todo';
+import { RegisterService } from '../services/register.service';
 
 // export class Todo {
 //   constructor(
@@ -23,8 +24,9 @@ import { Todo } from '../models/todo';
 export class DashboardComponent {
   todos: Todo[] = [];
   categoryFilter: string = "";
+  userName = '';
 
-  constructor(private todoDataService: TodoDataService, private _snackBar: MatSnackBar){}
+  constructor(private todoDataService: TodoDataService, private _snackBar: MatSnackBar, private registerService: RegisterService){}
 
   ngOnInit() {
     // this.todoDataService.getAllTodos().subscribe(
@@ -37,6 +39,15 @@ export class DashboardComponent {
     //   }
     // )
     this.refreshTodos();
+    this.registerService.getUserName().subscribe(
+      response => {
+        console.log(response);
+        this.userName = response.split(' ')[0];
+      },
+      error => {  
+        console.log(error);
+      }
+    )
   }
 
   refreshTodos() {

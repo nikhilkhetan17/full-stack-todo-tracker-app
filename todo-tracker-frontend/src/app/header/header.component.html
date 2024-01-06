@@ -1,19 +1,25 @@
 <mat-toolbar color="primary" id="header">
+    <span><img src="../../assets/images/to-do-list.png" alt="" class="todo-logo" routerLink="/home"></span>
     <span><a routerLink="/home" class="logo">Todo Tracker</a></span>
-    <button mat-stroked-button color="accent" *ngIf="this.loginService.isLoggedIn()" routerLink="/dashboard">Dashboard</button>
     <span class="example-spacer"></span>
     <div class="button-accent">
         <button mat-raised-button color="accent" routerLink="/sign-up"
-            *ngIf="!this.loginService.isLoggedIn()">SignUp</button>
-
-        <button mat-raised-button color="accent" routerLink="/login"
-            *ngIf="!this.loginService.isLoggedIn()">Login
+            *ngIf="!this.loginService.isLoggedIn()">SignUp
         </button>
 
-        <mat-icon *ngIf="this.loginService.isLoggedIn()" matTooltip="Archived Todos" routerLink="/archive" class="archive">archive</mat-icon>
-
-        <button mat-button *ngIf="this.loginService.isLoggedIn()">Hi, {{userName}}</button>
+        <!-- <button mat-button *ngIf="this.loginService.isLoggedIn()" class="username">Hi, {{userName}}</button> -->
         
-        <button mat-raised-button color="accent" *ngIf="this.loginService.isLoggedIn()" (click)="logoutUser()">Logout</button>
+        <button mat-raised-button color="accent" *ngIf="this.loginService.isLoggedIn()"
+            routerLink="/dashboard">Dashboard
+        </button>
+
+        <button mat-raised-button *ngIf="this.loginService.isLoggedIn()" matTooltip="Archived Todos" routerLink="/archive" class="archive" color="accent">Archive</button>
+
+        <button mat-raised-button color="accent" routerLink="/login" *ngIf="!this.loginService.isLoggedIn()">Login
+        </button>
+
+        <button mat-raised-button color="warn" *ngIf="this.loginService.isLoggedIn()"
+            (click)="logoutUser()">Logout
+        </button>
     </div>
 </mat-toolbar>

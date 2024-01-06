@@ -1,34 +1,46 @@
-<app-filter (filteredCategory)="onFilter($event)"></app-filter>
+<div class="filter-message">
+    <app-filter (filteredCategory)="onFilter($event)"></app-filter>
+    <h2 class="username">Welcome, {{userName}} you can manage your todos here.</h2>
+</div>
 
 <button mat-fab color="primary" class="add-todo" routerLink="/add-todo" id="fixed"><mat-icon>add</mat-icon></button>
 
 <div class="card-container">
-    <div class="card" *ngFor="let todo of todos">
-        <div class="card-header">
-            To-Do List
+    <!-- <ng-container *ngIf="todos.length > 0; else noTodosMessage"> -->
+        <div class="card" *ngFor="let todo of todos">
+            <div class="card-header">
+                To-Do List
+            </div>
+            <div class="card-body">
+                <div class="label">Task Name</div>
+                <div class="value">{{todo.todoName}}</div>
+
+                <div class="label">Task Description</div>
+                <div class="value">{{todo.todoDescription}}.</div>
+
+                <div class="label">Completion Date</div>
+                <div class="value">{{todo.targetDate | date}}</div>
+
+                <div class="label">Task Completed ?</div>
+                <div class="value completed" [ngClass]="{'completed': todo.todoCompleted === 'Yes', 'not-completed': todo.todoCompleted === 'No'}">{{todo.todoCompleted}}</div>
+
+                <div class="label">Priority</div>
+                <div class="value" [ngClass]="{'priority-high': todo.priority === 'High', 'priority-medium': todo.priority === 'Medium', 'priority-low': todo.priority === 'Low'}">{{todo.priority}}</div>
+
+                <button mat-stroked-button color="primary" style="margin-right: 15px"
+                    routerLink="/edit-todo/{{todo?.todoId}}" [disabled]="todo.todoCompleted === 'Yes'">Edit</button>
+                <!-- <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button> -->
+                <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)" [disabled]="todo.todoCompleted === 'No'">Delete</button>
+
+                <button mat-stroked-button color="accent" (click)="archieveTodo(todo)" style="margin-left: 15px" [disabled]="todo.todoCompleted === 'No'">Archive</button>
+            </div>
         </div>
-        <div class="card-body">
-            <div class="label">Task Name</div>
-            <div class="value">{{todo.todoName}}</div>
-
-            <div class="label">Task Description</div>
-            <div class="value">{{todo.todoDescription}}.</div>
-
-            <div class="label">Completion Date</div>
-            <div class="value">{{todo.targetDate | date}}</div>
-
-            <div class="label">Task Completed ?</div>
-            <div class="value completed" [ngClass]="{'completed': todo.todoCompleted === 'Yes', 'not-completed': todo.todoCompleted === 'No'}">{{todo.todoCompleted}}</div>
-
-            <div class="label">Priority</div>
-            <div class="value" [ngClass]="{'priority-high': todo.priority === 'High', 'priority-medium': todo.priority === 'Medium', 'priority-low': todo.priority === 'Low'}">{{todo.priority}}</div>
-
-            <button mat-stroked-button color="primary" style="margin-right: 15px"
-                routerLink="/edit-todo/{{todo?.todoId}}">Edit</button>
-            <!-- <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button> -->
-            <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)" [disabled]="todo.todoCompleted === 'No'">Delete</button>
-
-            <button mat-stroked-button color="accent" (click)="archieveTodo(todo)" style="margin-left: 15px" [disabled]="todo.todoCompleted === 'No'">Archive</button>
-        </div>
-    </div>
+    <!-- </ng-container> -->
 </div>
+
+<!-- No todos message -->
+<!-- <ng-template #noTodosMessage>
+    <div class="no-todos-message">
+      <p>No todo list created. You can create a todo by clicking the add button.</p>
+    </div>
+</ng-template> -->

@@ -19,13 +19,18 @@ mat-toolbar {
   z-index: 2;
 }
 
-.archive {
-  cursor: pointer;
-}
-
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 480px) {
   .logo {
     display: none;
     /* font-size: 15px; */
   }
+}
+
+.archive {
+  cursor: pointer;
+}
+
+.todo-logo {
+  width: 50px;
+  object-fit: cover;
 }

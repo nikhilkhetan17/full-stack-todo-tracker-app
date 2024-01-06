@@ -77,3 +77,23 @@
   font-family: cursive;
   font-weight: 500;
 }
+
+.no-todos-message {
+  text-align: center;
+  margin-top: 20px;
+  font-family: cursive;
+  font-size: 18px;
+  color: #2e2d2d;
+}
+
+.filter-message {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.username {
+  font-family: cursive;
+}

@@ -18,15 +18,15 @@ export class HeaderComponent {
     // this.loggedIn = this.loginService.isLoggedIn();
 
      // to get the username 
-     this.registerService.getUserName().subscribe(
-      response => {
-        console.log(response);
-        this.userName = response.split(' ')[0];
-      },
-      error => {  
-        console.log(error);
-      }
-    )
+    //  this.registerService.getUserName().subscribe(
+    //   response => {
+    //     console.log(response);
+    //     this.userName = response.split(' ')[0];
+    //   },
+    //   error => {  
+    //     console.log(error);
+    //   }
+    // )
   }
 
   logoutUser() {

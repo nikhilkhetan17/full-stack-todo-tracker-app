@@ -57,7 +57,7 @@ export class ArchiveComponent {
 
   onFilter(filter: string) {
     this.categoryFilter = filter;
-    this.todoDataService.getAllTodos().subscribe({
+    this.todoDataService.getAllArchivedTodoList().subscribe({
       next: (data: any) => {
         if (this.categoryFilter === "All") {
           // If the filter is "All," set todos to the entire data
