@@ -31,7 +31,7 @@ export class TodoDataService {
     return this.http.put(`${this.url}/api/v2/user/todo`, todo);
   }
 
-  // ----------------------Archive------------------
+  // ----------------------Archive----------------------
 
   saveToArchiveList(task: any) {
     return this.http.post(`${this.url}/api/v2/user/archiveTodo`, task);
@@ -44,4 +44,13 @@ export class TodoDataService {
   deleteTaskFromArchivedTodoList(id: any) {
     return this.http.delete(`${this.url}/api/v2/user/archivedTodoList/${id}`);
   }
+
+  // -----------------------------------------------------
+
+  public sendMail(mailBody: object){
+    return this.http.post(`http://localhost:8089/mail/sendStatus`, mailBody, {
+      responseType: 'text',
+    });
+  }
+
 }

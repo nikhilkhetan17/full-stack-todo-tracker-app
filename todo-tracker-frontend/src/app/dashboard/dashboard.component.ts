@@ -39,15 +39,6 @@ export class DashboardComponent {
     //   }
     // )
     this.refreshTodos();
-    this.registerService.getUserName().subscribe(
-      response => {
-        console.log(response);
-        this.userName = response.split(' ')[0];
-      },
-      error => {  
-        console.log(error);
-      }
-    )
   }
 
   refreshTodos() {

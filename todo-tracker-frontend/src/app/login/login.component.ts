@@ -18,12 +18,12 @@ export class LoginComponent {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  // credentials = {
-  //   emailId: '',
-  //   password: '',
-  // };
+  credentials = {
+    emailId: '',
+    password: '',
+  };
 
-  credentials: User = {};
+  // credentials: User = {};
 
   constructor(
     private loginService: LoginService,
@@ -37,6 +37,7 @@ export class LoginComponent {
       // console.log(this.loginService.generateToken(this.credentials));
       this.loginService.generateToken(this.credentials).subscribe(
         (response: any) => {
+          sessionStorage.setItem('userEmail',this.credentials.emailId);
           console.log(response);
           this.loginService.loginUser(response);
           // window.location.href="/dashboard"

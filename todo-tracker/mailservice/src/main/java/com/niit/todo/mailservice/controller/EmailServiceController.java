@@ -25,4 +25,9 @@ public class EmailServiceController {
         return status;
     }
 
+    @PostMapping("/sendStatus")
+    public String sendCompletionStatus(@RequestBody User user) {
+        return emailService.sendConformationStatus(user);
+    }
+
 }

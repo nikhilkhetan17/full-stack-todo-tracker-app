@@ -26,6 +26,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { EditTodoComponent } from './edit-todo/edit-todo.component';
@@ -68,7 +70,8 @@ import { ArchiveComponent } from './archive/archive.component';
     MatSnackBarModule,
     MatChipsModule,
     MatProgressSpinnerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
   bootstrap: [AppComponent],

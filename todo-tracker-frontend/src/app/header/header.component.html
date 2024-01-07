@@ -18,8 +18,19 @@
         <button mat-raised-button color="accent" routerLink="/login" *ngIf="!this.loginService.isLoggedIn()">Login
         </button>
 
-        <button mat-raised-button color="warn" *ngIf="this.loginService.isLoggedIn()"
+        <!-- <button mat-raised-button color="warn" *ngIf="this.loginService.isLoggedIn()"
             (click)="logoutUser()">Logout
-        </button>
+        </button> -->
     </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="this.loginService.isLoggedIn()">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            Hi, {{userName}}
+        </button>
+        <button mat-menu-item (click)="logoutUser()">
+            Logout
+        </button>
+    </mat-menu>
 </mat-toolbar>

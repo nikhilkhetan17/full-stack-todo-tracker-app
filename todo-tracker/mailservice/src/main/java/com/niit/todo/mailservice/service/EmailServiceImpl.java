@@ -52,4 +52,29 @@ public class EmailServiceImpl implements EmailService {
 
     }
 
+    @Override
+    public String sendConformationStatus(User user) {
+        try {
+            // creating a simple mail message
+            SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+
+            //Setting up necessary details
+            simpleMailMessage.setFrom(senderMail);
+            simpleMailMessage.setTo(user.getEmailId()); // Recipient mail id
+            simpleMailMessage.setText(user.getMsgBody());
+            simpleMailMessage.setSubject(user.getSubject());
+
+            // Sending the mail
+            javaMailSender.send(simpleMailMessage);
+            return "Mail status sent Successfully...";
+        }
+        // Catch block to handle the exceptions
+        catch (Exception e) {
+            System.out.println(e);
+            return "Error while Sending Mail status";
+
+        }
+    }
+
 }
+

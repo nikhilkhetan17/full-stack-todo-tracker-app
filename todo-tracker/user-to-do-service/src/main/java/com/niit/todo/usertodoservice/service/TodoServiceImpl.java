@@ -36,7 +36,7 @@ public class TodoServiceImpl implements ITodoService {
             throw new UserAlreadyExistsException();
         }
 
-        String senaMail = emailProxy.sendMail(user);
+        String sendMail = emailProxy.sendMail(user);
         User savedUser = userTodoRepository.save(user);
         if(!(savedUser.getEmailId().isEmpty())) {
             ResponseEntity<?> responseEntity = userProxy.saveUser(user);
