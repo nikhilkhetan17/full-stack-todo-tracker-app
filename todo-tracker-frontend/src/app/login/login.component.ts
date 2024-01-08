@@ -37,7 +37,7 @@ export class LoginComponent {
       // console.log(this.loginService.generateToken(this.credentials));
       this.loginService.generateToken(this.credentials).subscribe(
         (response: any) => {
-          sessionStorage.setItem('userEmail',this.credentials.emailId);
+          sessionStorage.setItem('userEmail', this.credentials.emailId);
           console.log(response);
           this.loginService.loginUser(response);
           // window.location.href="/dashboard"

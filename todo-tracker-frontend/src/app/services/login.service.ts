@@ -35,6 +35,7 @@ export class LoginService {
   // for logout the user
   logout() {
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('userEmail')
     return true;
   }
 

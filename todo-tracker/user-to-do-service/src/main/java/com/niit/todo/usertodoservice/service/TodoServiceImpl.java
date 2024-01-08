@@ -158,7 +158,7 @@ public class TodoServiceImpl implements ITodoService {
             throw new TodoNotFoundException();
         }
 
-        // Assuming that your User class has a method to set the filtered TodoList
+        // setting the todoList property of the user object with a list containing a single element obtained from an Optional object.
         user.setTodoList(Collections.singletonList(optionalTodo.get()));
         return user;
     }
@@ -167,18 +167,20 @@ public class TodoServiceImpl implements ITodoService {
 
     @Override
     public User saveTodoToArchivedList(TodoList task, String emailId) throws TodoAlreadyExistsException, UserNotFoundException, TodoNotFoundException {
+//        It checks whether a user with the provided emailId exists in the repository. If not, it throws a UserNotFoundException.
         if (userTodoRepository.findById(emailId).isEmpty()) {
             throw new UserNotFoundException();
         }
 
+//        If the user exists, it retrieves the User object from the repository based on the provided emailId.
         User user = userTodoRepository.findById(emailId).get();
 
-        // Check if the task already exists in the user's taskList
+//        It checks if the provided task already exists in the user's archived todo list.
         if (user.getArchievedTodoList() != null && user.getArchievedTodoList().stream().anyMatch(t -> t.getTodoId().equals(task.getTodoId()))) {
             throw new TodoAlreadyExistsException();
         }
 
-        // Add the task to the user's archivedTaskList
+        // If the archived list is currently null, it creates a new list with the task; otherwise, it appends the task to the existing list.
         if (user.getArchievedTodoList() == null) {
             user.setArchievedTodoList(Collections.singletonList(task));
         } else {
@@ -193,6 +195,7 @@ public class TodoServiceImpl implements ITodoService {
         UUID todoId = task.getTodoId();
         User updateUser = deleteTodo(emailId, todoId);
 
+//        Finally, it returns the updated User object, which now includes the newly added task in the archived todo list and the task removed from the active todo list.
         return updateUser;
     }
 
@@ -204,8 +207,9 @@ public class TodoServiceImpl implements ITodoService {
 
         User user = userTodoRepository.findById(emailId).get();
 
-        // Return the list of tracks in the user's track list
+        // Return the list of tasks in the user's archive list
         return user.getArchievedTodoList();
+
     }
 
     @Override
@@ -236,3 +240,11 @@ public class TodoServiceImpl implements ITodoService {
         return userTodoRepository.save(user);
     }
 }
+
+
+/*
+Collections.singletonList(task) is a method from the
+java.util.Collections utility class in Java. This method returns an immutable list containing only
+the specified element. In this case, it creates a list with a single element,
+which is the task provided as an argument.
+ */
