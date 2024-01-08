@@ -195,7 +195,7 @@ public class TodoServiceImpl implements ITodoService {
         UUID todoId = task.getTodoId();
         User updateUser = deleteTodo(emailId, todoId);
 
-//        Finally, it returns the updated User object, which now includes the newly added task in the archived todo list and the task removed from the active todo list.
+//        Finally, it returns the updated User object, which now includes the newly added task in the archived todo list and the task removed from the todo list.
         return updateUser;
     }
 

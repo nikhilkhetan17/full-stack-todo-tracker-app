@@ -47,6 +47,7 @@ const routes: Routes = [
   {
     path: 'archive',
     component: ArchiveComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: '**',
