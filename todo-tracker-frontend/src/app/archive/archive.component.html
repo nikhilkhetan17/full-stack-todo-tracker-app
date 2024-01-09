@@ -1,4 +1,7 @@
-<app-filter (filteredCategory)="onFilter($event)"></app-filter>
+<div class="filter-message">
+    <app-filter (filteredCategory)="onFilter($event)"></app-filter>
+    <h1>Archive</h1>
+</div>
 
 <div class="card-container">
     <div class="card" *ngFor="let todo of todos">
