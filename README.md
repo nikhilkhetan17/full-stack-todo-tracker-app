@@ -5,7 +5,7 @@
 <p>Developed a full-stack todo tracker application using Microservices, API Gateway, Eureka Server and Feign Client with
 user authentication and CRUD operations.
 <br><br>
-Technology used: Spring Boot, Angular, HTML, CSS, TypeScript, Angular Material, MySQL, MongoDB</p>
+Technology used: Spring Boot, Angular, HTML, CSS, Angular Material, MySQL, MongoDB</p>
 
 ## 📌 Features:
 
