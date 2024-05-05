@@ -239,6 +239,44 @@ public class TodoServiceImpl implements ITodoService {
         user.setArchievedTodoList(tasks);
         return userTodoRepository.save(user);
     }
+
+    @Override //----------------------Unarchive----------------
+    public User moveTaskFromArchiveToTaskList(String emailId, TodoList task) throws TodoNotFoundException, UserNotFoundException, TodoAlreadyExistsException {
+        // Retrieve the user by ID
+//        User user = userTodoRepository.findUserByUserEmail(emailId);
+//
+//        if (user == null) {
+//            throw new UserNotFoundException();
+//        }
+        if (userTodoRepository.findById(emailId).isEmpty()) {
+            throw new UserNotFoundException();
+        }
+
+        User user = userTodoRepository.findById(emailId).get();
+
+        // Check if the task already exists in the user's taskList
+        if (user.getTodoList() != null && user.getTodoList().stream().anyMatch(t -> t.getTodoId() == task.getTodoId())) {
+            throw new TodoAlreadyExistsException();
+        }
+
+        // Add the task to the userTaskList
+        if (user.getTodoList() == null) {
+            user.setTodoList(Collections.singletonList(task));
+        } else {
+            List<TodoList> tasks = new ArrayList<>(user.getTodoList());
+            tasks.add(task);
+            user.setTodoList(tasks);
+        }
+        //save new task into archiveList
+        userTodoRepository.save(user);
+
+        //code to remove the task from taskList after adding to archivedTaskList
+        UUID taskId = task.getTodoId();
+        User updateUser = deleteTodoFromArchivedTodoList(emailId, taskId);
+
+        return updateUser;
+
+    }
 }
 
 

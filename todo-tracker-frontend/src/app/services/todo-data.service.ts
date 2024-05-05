@@ -45,6 +45,12 @@ export class TodoDataService {
     return this.http.delete(`${this.url}/api/v2/user/archivedTodoList/${id}`);
   }
 
+   // -------------------------------------------
+   unarchieveTask(task: any) {
+    // return this.http.post(this.baseUrl + "user/unarchiveTask", task, { headers });
+    return this.http.post(`${this.url}/api/v2/user/unarchiveTask`, task);
+  }
+
   // -----------------------------------------------------
 
   public sendMail(mailBody: object){

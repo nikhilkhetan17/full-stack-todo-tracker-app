@@ -27,13 +27,17 @@
 
                 <div class="label">Priority</div>
                 <div class="value" [ngClass]="{'priority-high': todo.priority === 'High', 'priority-medium': todo.priority === 'Medium', 'priority-low': todo.priority === 'Low'}">{{todo.priority}}</div>
-
+                
+                <!-- [disabled]="todo.todoCompleted === 'Yes'" -->
                 <button mat-stroked-button color="primary" style="margin-right: 15px"
-                    routerLink="/edit-todo/{{todo?.todoId}}" [disabled]="todo.todoCompleted === 'Yes'">Edit</button>
-                <!-- <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button> -->
-                <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)" [disabled]="todo.todoCompleted === 'No'">Delete</button>
+                    routerLink="/edit-todo/{{todo?.todoId}}">Edit</button>
 
-                <button mat-stroked-button color="accent" (click)="archieveTodo(todo)" style="margin-left: 15px" [disabled]="todo.todoCompleted === 'No'">Archive</button>
+                <!-- <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button> -->
+                <!-- [disabled]="todo.todoCompleted === 'No'" -->
+                <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)" >Delete</button>
+                
+                <!-- [disabled]="todo.todoCompleted === 'No'" -->
+                <button mat-stroked-button color="accent" (click)="archieveTodo(todo)" style="margin-left: 15px">Archive</button>
             </div>
         </div>
     <!-- </ng-container> -->

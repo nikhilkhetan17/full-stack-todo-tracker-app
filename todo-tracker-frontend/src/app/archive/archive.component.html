@@ -25,7 +25,9 @@
             <div class="value" [ngClass]="{'priority-high': todo.priority === 'High', 'priority-medium': todo.priority === 'Medium', 'priority-low': todo.priority === 'Low'}">{{todo.priority}}</div>
 
             <!-- <button mat-stroked-button color="warn" (click)="deleteTodo(todo.todoId)">Delete</button> -->
-            <button mat-stroked-button color="warn" (click)="deleteTodoArchive(todo.todoId)" [disabled]="todo.todoCompleted === 'No'">Delete</button>
+            <!-- [disabled]="todo.todoCompleted === 'No'" -->
+            <button mat-stroked-button color="warn" (click)="deleteTodoArchive(todo.todoId)" >Delete</button>
+            <button mat-stroked-button color="warn" style="margin-left: 15px" (click)="unarchiveTask(todo)">Unarchive</button>
         </div>
     </div>
 </div>

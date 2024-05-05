@@ -183,4 +183,20 @@ public class TodoController {
         return responseEntity;
     }
 
+    @PostMapping("user/unarchiveTask") ///-------------
+    public ResponseEntity<?> moveTaskFromArchiveToTaskList(@RequestBody TodoList task, HttpServletRequest request) throws TodoAlreadyExistsException, UserNotFoundException, TodoNotFoundException {
+        // add a task to a specific user archivedTaskList, return 201 status if task is saved else 500 status
+        try {
+            String id = getEmailIdFromClaims(request);
+            responseEntity = new ResponseEntity<>(iTodoService.moveTaskFromArchiveToTaskList(id, task), HttpStatus.CREATED);
+        } catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
+        } catch (TodoAlreadyExistsException e) {
+            throw new TodoAlreadyExistsException();
+        } catch (TodoNotFoundException e) {
+            throw new TodoNotFoundException();
+        }
+        return responseEntity;
+    }
+
 }

@@ -27,4 +27,6 @@ public interface ITodoService {
     List<TodoList> getAllTodosFromArchievedList(String emailId) throws UserNotFoundException;
 
     User deleteTodoFromArchivedTodoList(String emailId, UUID taskId) throws TodoNotFoundException, UserNotFoundException;
+
+    User moveTaskFromArchiveToTaskList(String emailId, TodoList task) throws TodoAlreadyExistsException, UserNotFoundException, TodoNotFoundException;
 }

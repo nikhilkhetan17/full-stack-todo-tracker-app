@@ -55,6 +55,25 @@ export class ArchiveComponent {
     }
   }
 
+  unarchiveTask(task: any) {
+    this.todoDataService.unarchieveTask(task).subscribe(
+      (response) => {
+        console.log('Task unarchieved successfully:', response);
+
+        // Update the taskList
+        this.getAllArchiveTodoList(); 
+        this._snackBar.open('Todo Unarchived!', 'Success', {
+          duration: 3000,
+        });
+        // this.stateService.toggleArchive()
+        // this.router.navigateByUrl("/taskList")
+      },
+      (error) => {
+        console.error('Error deleting task:', error);
+      }
+    );
+  }
+
   onFilter(filter: string) {
     this.categoryFilter = filter;
     this.todoDataService.getAllArchivedTodoList().subscribe({
