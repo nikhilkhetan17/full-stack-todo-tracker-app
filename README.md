@@ -17,16 +17,16 @@ Technology used: Spring Boot, Angular, HTML, CSS, TypeScript, Angular Material, 
 
 ## 📌 Screenshot:
 
-![HomePage](./images\home.png)
-![SignUp](./images\signup.png)
-![LoginPage](./images\login.png)
-![Dashboard](./images\dashboard.png)
-![HomePage](./images\archive.png)
-![PageNotFound](./images\PageNotFound.png)
+![HomePage](./images/home.png)
+![SignUp](./images/signup.png)
+![LoginPage](./images/login.png)
+![Dashboard](./images/dashboard.png)
+![HomePage](./images/archive.png)
+![PageNotFound](./images/PageNotFound.png)
 
 ## 📌 Front-end Flow Diagram:
-![FrontEndFlow](./images\FroentendFlow.png)
+![FrontEndFlow](./images/FroentendFlow.png)
 
 ## 📌 Back-end Flow Diagram:
 
-![BackEndFlow](./images\backendFlow.png)
+![BackEndFlow](./images/backendFlow.png)
