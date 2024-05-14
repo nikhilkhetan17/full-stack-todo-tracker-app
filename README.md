@@ -1,4 +1,4 @@
-## ⭐Full Stack Todo Tracer Application using Angular and Spring Boot⭐
+## ⭐Full Stack Todo Tracker Application using Angular and Spring Boot⭐
 
 <br>
 
