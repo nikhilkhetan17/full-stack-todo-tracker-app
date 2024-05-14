@@ -21,10 +21,12 @@ Technology used: Spring Boot, Angular, HTML, CSS, Angular Material, MySQL, Mongo
 ![SignUp](./images/signup.png)
 ![LoginPage](./images/login.png)
 ![Dashboard](./images/dashboard.png)
+![Update](./images/updateTodo.png)
 ![Archive](./images/Archive.png)
 ![PageNotFound](./images/PageNotFound.png)
 
 ## 📌 Front-end Flow Diagram:
+
 ![FrontEndFlow](./images/FroentendFlow.png)
 
 ## 📌 Back-end Flow Diagram:
