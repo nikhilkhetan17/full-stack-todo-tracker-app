@@ -9,9 +9,9 @@ Technology used: Spring Boot, Angular, HTML, CSS, Angular Material, MySQL, Mongo
 
 ## 📌 Features:
 
-- #### Easily sign in or register to access your personalized task management.
+- #### Easily sign in, register or logout to access your personalized task management.
 - #### Add, update, and delete tasks effortlessly.
-- #### Todo can be sent to archive or unarchive.
+- #### Users can archive or unarchive tasks.
 - #### Modern and visually appealing interface for a delightful user experience.
 - #### Made Responsive across all devices.
 
