@@ -6,6 +6,7 @@
 user authentication and CRUD operations.
 <br><br>
 Technology used: Spring Boot, Angular, HTML, CSS, Angular Material, MySQL, MongoDB</p>
+This project was part of my full-stack software engineering program at NIIT Institute.
 
 ## 📌 Features:
 
