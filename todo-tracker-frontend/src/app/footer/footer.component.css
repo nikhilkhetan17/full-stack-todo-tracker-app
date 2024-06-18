@@ -3,11 +3,11 @@
   color: #fff;
   padding: 10px 0;
   text-align: center;
-  margin-top: 80px;
-  /* position: absolute;
+  /* margin-top: 80px; */
+  position: fixed;
   bottom: 0;
-  width: 100%; */
-  /* z-index: -1; */
+  width: 100%;
+  z-index: 1;
 }
 
 .footer span {
